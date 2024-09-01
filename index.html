@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perks Customs - Home</title>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const video = document.querySelector(".background-video")
+        const fadeDuration = 5 // Duration of the fade in/out in seconds
+        const fadeOutStartTime = 5 // Time in seconds before the end to start fading out
+
+        function fadeOutVideo() {
+          video.style.opacity = "0" // Trigger fade-out
+        }
+
+        function fadeInVideo() {
+          video.style.opacity = "1" // Trigger fade-in
+        }
+
+        function handleVideoEnd() {
+          fadeOutVideo()
+          setTimeout(() => {
+            video.currentTime = 0 // Restart the video
+            video.play() // Play the video again
+            fadeInVideo() // Fade in at the beginning
+          }, fadeDuration * 1000) // Wait for the fade out duration
+        }
+
+        // Update the timeupdate event listener to handle the fade-out before the video ends
+        video.addEventListener("timeupdate", () => {
+          const timeRemaining = video.duration - video.currentTime
+
+          if (timeRemaining <= fadeOutStartTime) {
+            fadeOutVideo()
+          }
+        })
+
+        // Handle the video end event
+        video.addEventListener("ended", handleVideoEnd)
+
+        // Start the video and fade in initially
+        fadeInVideo()
+      })
+    </script>
+    <script type="module" crossorigin src="/assets/bootstrap.esm.ed0af4c7.js"></script>
+    <link rel="stylesheet" href="/assets/bootstrap.esm.fa2663af.css">
+  </head>
+  <body class="d-flex flex-column scroll-container min-vh-100">
+    <video class="background-video" autoplay muted>
+      <source src="/assets/smoke.becc1ad1.webm" type="video/webm" />
+      <!-- Ensure type matches the video format -->
+    </video>
+
+    <header class="bg-dark text-light">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-dark">
+          <a class="navbar-brand">
+            <img
+              src="/assets/PerksCustomsLogo.5d4e4c21.PNG"
+              alt="Perks Customs Logo"
+              class="img-fluid"
+
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="gallery.html">GALLERY</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">CONTACT US</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-fill home-page">
+      <section class="home text-center py-5">
+        <div class="container h-100 d-flex flex-column justify-content-center">
+          <div><a href="gallery.html" class="btn view-gallery btn-outline-primary btn-lg">View Gallery</a></div>
+          <div class="main-logo"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-dark text-light py-3">
+      <div class="container text-center">
+        <div class="social-media mb-2">
+          <a href="https://facebook.com" target="_blank" class="logo"><img src="data:image/png;base64,UklGRjIDAABXRUJQVlA4TCYDAAAv/8A/EIDcNpIkif673Vd1Fnb0WnSE5P3/16b5/H7pg4cGmLu74/4fTOu3Wbpzy2lHisNcs5tLZa7HLT0mRxxO7pAfDuH5TgAst5VLnQTToAU2+vnZ5g0yJdRx2wGjMSXu6EA59birDJsiW0gXiqpXDWUCRS0LhWWpp7yFCxpHcU26hb9iPx0FlnTgBQECJSYEVuFaUWZ38CVSRFFoUSkLpPiGUvsu5RHuI4otij/RinJrfcCPggvcsp8oRjhwA5dEyen4lSCKLnhBMVHNBOVMBGUXOeFkdWNxHoRReGEAwPSU040BKEXplQC4284dAF3tdILtKL5t3PW41NdTJ1FPnFmPabCeAQv1zLPrsdHn/1/ZLN1TYW7F9suVQYLXi5jyTtBxDObmMOyxShLMbmHddxc5YHwJy545DDt2sOaFXbBnBn8dh10jGOOFfRuIyYV0Fl2DrQPodwbaSdoA7cSlQTsvSdDOSxzaiXNAO0lp0E6/PGhnwRmI5yrEE4V4RuXW44F4/kA8a47V8xziWbaznmcQz7pD9XyHes7XM8xRzwOop6KeSVI976CeG/kcq2cWq0eHjXEODlIAT3fAlKvzU6cpqyii0AaqtaOULs9z2RpqqXicTWZRTPvHuY1qyh3nXw7p44znII1j54Dx6PPf9zr4q+Xno9UjE/WoqB6jnnxUj1aPTNSjonqMevJRPVo9MlGPiuox6slH9Wj1yEQ9KqrHqCcf1aPVIxP1qKgeo558VI9Wj0zUo6J6jHryUT1aPTJRj4rqMerJR/Vo9chEPSqqx/hZ3p+Hcn7++/z3+e9fEHY9toV65g3WM8Csx5SoJ66unghXPS7b69kGutrpBHCnnTsAStspAcB0l9ONAYBwOWEAAE5WNxbnAUS6icApxUQ145QzEKxGhUuc3oyOX4H9RDHCfrjLV4wf7mvppRUe4j7WEsWfgBTfWvkuBZ5L8bGUj1JgJa6lk1YcFvMRjQg+WG+f/4XoDsCbONV4HRNUHF6mqGWVYamjwEDZQrqq6FXDCUMxJe7o7KHTXaUYjLaVS50406B59u/HNm+AKa6Oyw5YDg==" alt="" /></a>
+          <a href="https://instagram.com" target="_blank" class="logo"><img src="data:image/png;base64,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" alt="" /></a>
+        </div>
+        <p>&copy; 2024 Perks Customs. All rights reserved.</p>
+      </div>
+    </footer>
+
+    
+  </body>
+</html>
